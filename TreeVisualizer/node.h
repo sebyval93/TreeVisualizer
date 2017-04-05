@@ -16,6 +16,10 @@ public:
 	sf::Vector2f getPos();
 
 	bool isEnabled();
+
+	Node *right;
+	Node *left;
+
 private:
 	sf::CircleShape m_node;
 };
