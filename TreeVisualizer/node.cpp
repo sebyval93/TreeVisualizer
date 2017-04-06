@@ -1,5 +1,4 @@
 #include "node.h"
-#include <iostream>
 
 Node::Node(sf::Vector2f pos)
 {
@@ -16,9 +15,6 @@ Node::Node(float posX, float posY)
 	setPos(posX, posY);
 	setRadius(25);
 	m_nodeShape.setFillColor(sf::Color::White);
-
-
-	std::cout << "origin X :" << m_nodeShape.getOrigin().x << " origin Y : " << m_nodeShape.getOrigin().y << '/n';
 
 	right = nullptr;
 	left = nullptr;
@@ -46,18 +42,18 @@ void Node::setEnable(bool enable)
 void Node::setPos(sf::Vector2f pos)
 {
 	m_nodeShape.setPosition(pos.x - m_nodeShape.getRadius(), pos.y - m_nodeShape.getRadius());
-	m_nodeShape.setOrigin(m_nodeShape.getPosition().x, m_nodeShape.getPosition().y);
+	m_nodeShape.setOrigin(getPos().x, getPos().y);
 }
 
 void Node::setPos(float posX, float posY)
 {
 	m_nodeShape.setPosition(posX - m_nodeShape.getRadius(), posY - m_nodeShape.getRadius());
-	m_nodeShape.setOrigin(m_nodeShape.getPosition().x, m_nodeShape.getPosition().y);
+	m_nodeShape.setOrigin(getPos().x, getPos().y);
 }
 
 sf::Vector2f Node::getPos()
 {
-	return sf::Vector2f();
+	return m_nodeShape.getPosition();
 }
 
 bool Node::isEnabled()
