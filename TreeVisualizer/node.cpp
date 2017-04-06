@@ -1,10 +1,11 @@
 #include "node.h"
+#include <iostream>
 
 Node::Node(sf::Vector2f pos)
 {
-	m_node.setPosition(pos);
-	m_node.setRadius(25);
-	m_node.setFillColor(sf::Color::White);
+	setRadius(25);
+	setPos(pos);
+	m_nodeShape.setFillColor(sf::Color::White);
 
 	right = nullptr;
 	left = nullptr;
@@ -12,35 +13,46 @@ Node::Node(sf::Vector2f pos)
 
 Node::Node(float posX, float posY)
 {
-	m_node.setPosition(posX, posY);
-	m_node.setRadius(25);
-	m_node.setFillColor(sf::Color::White);
+	setPos(posX, posY);
+	setRadius(25);
+	m_nodeShape.setFillColor(sf::Color::White);
+
+
+	std::cout << "origin X :" << m_nodeShape.getOrigin().x << " origin Y : " << m_nodeShape.getOrigin().y << '/n';
 
 	right = nullptr;
 	left = nullptr;
 }
 
+void Node::setRadius(float radius)
+{
+	m_nodeShape.setRadius(radius);
+	m_nodeShape.setOrigin(m_nodeShape.getRadius(), m_nodeShape.getRadius());
+}
+
 sf::CircleShape Node::getShape()
 {
-	return m_node;
+	return m_nodeShape;
 }
 
 void Node::setEnable(bool enable)
 {
 	if (enable)
-		m_node.setFillColor(sf::Color::White);
+		m_nodeShape.setFillColor(sf::Color::White);
 	else
-		m_node.setFillColor(sf::Color(10, 10, 10, 255));
+		m_nodeShape.setFillColor(sf::Color(10, 10, 10, 255));
 }
 
 void Node::setPos(sf::Vector2f pos)
 {
-	m_node.setPosition(pos);
+	m_nodeShape.setPosition(pos.x - m_nodeShape.getRadius(), pos.y - m_nodeShape.getRadius());
+	m_nodeShape.setOrigin(m_nodeShape.getPosition().x, m_nodeShape.getPosition().y);
 }
 
 void Node::setPos(float posX, float posY)
 {
-	m_node.setPosition(posX, posY);
+	m_nodeShape.setPosition(posX - m_nodeShape.getRadius(), posY - m_nodeShape.getRadius());
+	m_nodeShape.setOrigin(m_nodeShape.getPosition().x, m_nodeShape.getPosition().y);
 }
 
 sf::Vector2f Node::getPos()

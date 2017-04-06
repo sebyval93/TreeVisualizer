@@ -12,6 +12,7 @@ public:
 
 	void setPos(sf::Vector2f pos);
 	void setPos(float posX, float posY);
+	void setRadius(float radius);
 
 	sf::Vector2f getPos();
 
@@ -21,5 +22,5 @@ public:
 	Node *left;
 
 private:
-	sf::CircleShape m_node;
+	sf::CircleShape m_nodeShape;
 };
