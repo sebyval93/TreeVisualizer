@@ -36,7 +36,7 @@ void Node::setEnable(bool enable)
 	if (enable)
 		m_nodeShape.setFillColor(sf::Color::White);
 	else
-		m_nodeShape.setFillColor(sf::Color(10, 10, 10, 255));
+		m_nodeShape.setFillColor(sf::Color(10, 10, 100, 255));
 }
 
 void Node::setPos(sf::Vector2f pos)

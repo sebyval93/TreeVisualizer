@@ -6,6 +6,7 @@ Window::Window(int width, int height, std::string title)
 	m_height = height;
 	m_title = title;
 	m_fullscreen = false;
+	m_enforcedFPS = 0;
 
 	m_window = std::make_unique<sf::RenderWindow>(sf::VideoMode(m_width, m_height), m_title, sf::Style::Close);
 }
@@ -33,6 +34,7 @@ void Window::enableVsync(bool enable)
 void Window::setFramerate(int fps)
 {
 	m_window->setFramerateLimit(fps);
+	m_enforcedFPS = fps;
 }
 
 void Window::setFullscreen(bool enable)
@@ -42,6 +44,7 @@ void Window::setFullscreen(bool enable)
 		if (!m_fullscreen)
 		{
 			m_window->create(sf::VideoMode::getDesktopMode(), m_title, sf::Style::None);
+			m_window->setFramerateLimit(m_enforcedFPS);
 			m_fullscreen = true;
 		}
 	}
@@ -50,6 +53,7 @@ void Window::setFullscreen(bool enable)
 		if (m_fullscreen)
 		{
 			m_window->create(sf::VideoMode(m_width, m_height), m_title, sf::Style::Close);
+			m_window->setFramerateLimit(m_enforcedFPS);
 			m_fullscreen = false;
 		}
 	}

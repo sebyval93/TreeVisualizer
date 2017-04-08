@@ -35,6 +35,8 @@ private:
 	int m_height;
 	std::string m_title;
 
+	int m_enforcedFPS;
+
 	bool m_vSync;
 	bool m_fullscreen;
 };
