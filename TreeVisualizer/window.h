@@ -35,6 +35,7 @@ private:
 	int m_height;
 	std::string m_title;
 
+	bool m_hasEnforcedFPS;
 	int m_enforcedFPS;
 
 	bool m_vSync;
