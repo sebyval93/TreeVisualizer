@@ -148,13 +148,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="gui_control_panel.cpp" />
     <ClCompile Include="gui_system.cpp" />
+    <ClCompile Include="gui_window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gui_control_panel.h" />
     <ClInclude Include="gui_system.h" />
+    <ClInclude Include="gui_window.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
