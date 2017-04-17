@@ -1,4 +1,5 @@
 #include "window.h"
+#include <iostream>
 
 Window::Window(int width, int height, std::string title)
 {
@@ -9,7 +10,7 @@ Window::Window(int width, int height, std::string title)
 	m_hasEnforcedFPS = false;
 	m_enforcedFPS = 0;
 
-	m_window = std::make_unique<sf::RenderWindow>(sf::VideoMode(m_width, m_height), m_title, sf::Style::Close);
+	m_window = std::make_shared<sf::RenderWindow>(sf::VideoMode(m_width, m_height), m_title, sf::Style::Close);
 }
 
 bool Window::isVsyncEnabled()

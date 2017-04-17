@@ -1,13 +1,19 @@
+#pragma once
 #include <SFML\Graphics.hpp>
 #include <memory>
 #include <string>
 
+//#include "gui_system.h"
 #include "node.h"
+
+class GUISystem;
 
 class Window
 {
 public:
 	Window(int width, int height, std::string title);
+
+	friend class GUISystem;
 
 	bool isVsyncEnabled();
 	bool isFullscreen();
@@ -30,7 +36,7 @@ public:
 	void update();
 
 private:
-	std::unique_ptr<sf::RenderWindow> m_window;
+	std::shared_ptr<sf::RenderWindow> m_window;
 	int m_width;
 	int m_height;
 	std::string m_title;
